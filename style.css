@@ -1,1 +1,36 @@
 /* CSS for PROJECT: ETCH-A-SKETCH */
+html{
+    /* https://unsplash.com/photos/qaPt5-99E9k */
+    background-image: url(https://source.unsplash.com/qaPt5-99E9k);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: fit-content;
+    width: 100%;
+    margin: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    width: 960px;
+    height: 960px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 960px;
+}
+.row{
+    display: inline-flex;
+    flex-direction: row;
+    width: 60px;
+    height: 60px;
+}
