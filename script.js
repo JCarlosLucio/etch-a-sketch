@@ -13,7 +13,7 @@ function createGrid(gridSize) {
         column.classList.add('column');
     }
     for (let j = 1; j <= gridSize; j++) {
-        let squareSize = 960 / gridSize;
+        let squareSize = 780 / gridSize;
         const columnList = document.querySelectorAll('.column');
         columnList.forEach((col) => {
             const row = document.createElement('div');
@@ -47,7 +47,7 @@ function paintBlack() {
             event.target.style.background = 'black';
         });
     });
-    colorBtn.textContent = 'Colors'
+    colorBtn.textContent = 'Rainbow';
 }
 function paintRndColor() {
     const columnList = document.querySelectorAll('.column');
@@ -56,19 +56,20 @@ function paintRndColor() {
             event.target.style.background = `${randomColor()}`;
         });
     });
-    colorBtn.textContent = 'Black'
+    colorBtn.textContent = 'Black';
 }
 
 sizeBtn.addEventListener('click', (e) => {
     clearGrid(gridSize);
-    gridSize = parseInt(prompt('Enter grid size number(i.e. 32 for a 32x32 grid)'), '0');
+    gridSize = parseInt(prompt('Enter grid size(i.e.32 for a 32x32 grid)'), '0');
     if (gridSize < 0) {
         gridSize = 16;
-    } else if (isNaN(gridSize)){
+    } else if (isNaN(gridSize)) {
         gridSize = 16;
-    }else if (gridSize >64){
+    } else if (gridSize > 64) {
         gridSize = 64;
     }
+    sizeBtn.textContent = `${gridSize}x${gridSize}`;
     createGrid(gridSize);
 })
 clearBtn.addEventListener('click', (e) => {
