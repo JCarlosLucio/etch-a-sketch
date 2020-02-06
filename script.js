@@ -22,11 +22,11 @@ function createGrid(gridSize) {
             row.style.width = `${squareSize}px`;
             row.style.height = `${squareSize}px`;
         });
-        if (paintColor === 'black') {
-            paintBlack();
-        } else {
-            paintRndColor();
-        }
+    }
+    if (paintColor === 'black') {
+        paintBlack();
+    } else {
+        paintRndColor();
     }
 }
 function clearGrid(gridSize) {
@@ -34,26 +34,28 @@ function clearGrid(gridSize) {
         content.removeChild(content.firstChild);
     }
 }
-function randomColor() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
-}
 function paintBlack() {
-    const columnList = document.querySelectorAll('.column');
-    columnList.forEach((col) => {
-        col.addEventListener('mouseover', (event) => {
-            event.target.style.background = 'black';
+    const rowList = document.querySelectorAll('.row');
+    rowList.forEach((row) => {
+        let rgb = 0;
+        row.addEventListener('mouseover', (event) => {
+            event.target.style.background = `rgb(${rgb}, ${rgb}, ${rgb})`;
+            // rgb -= 100;
         });
     });
     colorBtn.textContent = 'Rainbow';
 }
 function paintRndColor() {
-    const columnList = document.querySelectorAll('.column');
-    columnList.forEach((col) => {
-        col.addEventListener('mouseover', (event) => {
-            event.target.style.background = `${randomColor()}`;
+    const rowList = document.querySelectorAll('.row');
+    rowList.forEach((row) => {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        row.addEventListener('mouseover', (event) => {
+            event.target.style.background = `rgb(${r}, ${g}, ${b})`;
+            r -= 20;
+            g -= 20;
+            b -= 20;
         });
     });
     colorBtn.textContent = 'Black';
