@@ -29,7 +29,8 @@ function createGrid(gridSize) {
 		paint(paintColor);
 	}
 }
-function clearGrid(gridSize) {
+
+function clearGrid() {
 	while (content.firstChild) {
 		content.removeChild(content.firstChild);
 	}
@@ -37,8 +38,8 @@ function clearGrid(gridSize) {
 
 function paint(color) {
 	const rowList = document.querySelectorAll('.row');
+	let random = () => Math.floor(Math.random() * 256);
 	rowList.forEach((row) => {
-		let random = () => Math.floor(Math.random() * 256);
 		let r = random();
 		let g = random();
 		let b = random();
@@ -54,8 +55,8 @@ function paint(color) {
 	colorBtn.textContent = color === 'rainbow' ? 'Rainbow' : 'Black';
 }
 
-sizeBtn.addEventListener('click', (e) => {
-	clearGrid(gridSize);
+sizeBtn.addEventListener('click', () => {
+	clearGrid();
 	gridSize = parseInt(prompt('Enter grid size(i.e.32 for a 32x32 grid)'), '0');
 	if (gridSize < 0) {
 		gridSize = 16;
@@ -67,11 +68,13 @@ sizeBtn.addEventListener('click', (e) => {
 	sizeBtn.textContent = `${gridSize}x${gridSize}`;
 	createGrid(gridSize);
 });
-clearBtn.addEventListener('click', (e) => {
-	clearGrid(gridSize);
+
+clearBtn.addEventListener('click', () => {
+	clearGrid();
 	createGrid(gridSize);
 });
-colorBtn.addEventListener('click', (e) => {
+
+colorBtn.addEventListener('click', () => {
 	if (paintColor === 'black') {
 		paintColor = 'rainbow';
 		paint(paintColor);
